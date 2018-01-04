@@ -90,7 +90,7 @@ a, a:visited {
 	transition: all 0.3s ease-in-out;
 }
 a:hover, a:focus, a:active {
-	color: #FF0077;
+	color: #0094FF;
 	outline: 0;
 }
 
@@ -309,7 +309,7 @@ ul.disc li::before {
 }
 dt {
 	margin: 0;
-	color: #FF0077;
+	color: #0094FF;
 }
 dd {
 	margin: 0 0 0 2rem;
@@ -594,7 +594,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-	color: #cc005f;
+	color: #005bcc;
 	border-bottom: 1px solid #FF0077;
 }
 label, legend {
@@ -737,7 +737,7 @@ button.stroke.large, .button.stroke.large {
 }
 button.stroke:hover, .button.stroke:hover {
 	border: 3px solid #FF0077;
-	color: #FF0077;
+	color: #0094FF;
 }
 button::-moz-focus-inner, input::-moz-focus-inner {
 	border: 0;
@@ -925,7 +925,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	color: #252525;
 }
 .stats-tabs li a:hover {
-	color: #FF0077;
+	color: #0094FF;
 }
 .stats-tabs li a em {
 	display: block;
@@ -1041,7 +1041,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	margin-bottom: 1.2rem;
 }
 .section-intro h5 {
-	color: #FF0077;
+	color: #0094FF;
 	font-size: 1.6rem;
 	line-height: 1.875;
 	margin-bottom: 0.3rem;
@@ -1252,12 +1252,12 @@ header .logo a {
 	border: none;
 }
 .main-navigation li a:hover {
-	color: #FF0077;
+	color: #0094FF;
 	padding-left: 1rem;
 }
 .main-navigation li.current > a {
 	background: none;
-	color: #FF0077;
+	color: #0094FF;
 }
 
 /**
@@ -1337,7 +1337,7 @@ header .logo a {
 	text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 .intro-content h5 {
-	color: #cc005f;
+	color: #005bcc;
 	font-family: "poppins-bold", sans-serif;
 	font-size: 2.3rem;
 	line-height: 1.565;
@@ -1384,7 +1384,7 @@ header .logo a {
 	letter-spacing: .25rem;
 }
 .intro-content .button:hover, .intro-content .button:focus {
-	border-color: #cc005f;
+	border-color: ##005bcc;
 }
 .intro-content .button::after {
 	display: inline-block;
@@ -1416,7 +1416,7 @@ header .logo a {
 	color: #FFFFFF;
 }
 .intro-social li a:hover, .intro-social li a:focus {
-	color: #cc005f;
+	color: ##005bcc;
 }
 
 /**
@@ -1504,8 +1504,8 @@ header .logo a {
 	margin-left: -30px;
 }
 .intro-info img {
-	height: 9rem;
-	width: 9rem;
+	height: 20rem;
+	width: 20rem;
 	border-radius: 50%;
 	margin: .9rem 0 0 0;
 	float: left;
@@ -1629,7 +1629,7 @@ header .logo a {
 	text-align: center;
 }
 #resume .resume-header h2 {
-	color: #FF0077;
+	color: #0094FF;
 }
 
 #resume .resume-timeline {
@@ -2070,7 +2070,7 @@ header .logo a {
 	color: #313131;
 }
 .section-ads span {
-	color: #3F0D39;
+	color: #0c223f;
 }
 
 /**
@@ -2122,7 +2122,7 @@ header .logo a {
 	color: white;
 }
 #services .section-intro h5 {
-	color: #FF0077;
+	color: #0094FF;
 }
 #services .section-intro p {
 	color: rgba(255, 255, 255, 0.7);
@@ -2144,7 +2144,7 @@ header .logo a {
 }
 .services-list .icon i {
 	font-size: 5.4rem;
-	color: #FF0077;
+	color: #0094FF;
 }
 .services-list h3 {
 	color: #FFFFFF;
@@ -2258,7 +2258,7 @@ header .logo a {
 	color: white;
 }
 #contact .section-intro h5 {
-	color: #FF0077;
+	color: #0094FF;
 }
 #contact .section-intro p {
 	color: rgba(255, 255, 255, 0.7);
@@ -2342,7 +2342,7 @@ header .logo a {
 #contact input[type="text"]:focus,
 #contact input[type="password"]:focus,
 #contact input[type="email"]:focus {
-	border-color: #FF0077;
+	border-color: #0094FF;
 	color: #FFFFFF;
 }
 #contact textarea {
@@ -2366,7 +2366,7 @@ header .logo a {
 	color: #FFFFFF;
 }
 #contact button.submitform:hover, #contact button.submitform:focus {
-	background: #cc005f;
+	background: #005bcc;
 }
 #message-warning, #message-success {
 	display: none;
@@ -2380,7 +2380,7 @@ header .logo a {
 	color: #fa0003;
 }
 #message-success {
-	color: #FF0077;
+	color: #0094FF;
 }
 #message-warning i, #message-success i {
 	margin-right: 10px;
@@ -2425,7 +2425,7 @@ header .logo a {
 	color: #FFFFFF;
 }
 .contact-info h5 {
-	color: #FF0077;
+	color: #0094FF;
 }
 
 /**
@@ -2499,7 +2499,7 @@ footer a, footer a:visited {
 	color: #FFFFFF;
 }
 footer a:hover, footer a:focus {
-	color: #FF0077;
+	color: #0094FF;
 }
 footer .row {
 	max-width: 900px;
