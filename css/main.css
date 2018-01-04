@@ -1956,7 +1956,7 @@ header .logo a {
 	border-right: 1px solid rgba(200, 200, 200, 0.1);
 }
 .popup-modal .link-box a:hover {
-	background: #cc005f;
+	background: #005bcc;
 	border: none;
 }
 @media only screen and (max-width:600px) {
@@ -2578,7 +2578,7 @@ footer .copyright span:last-child::after {
 	width: 6rem;
 	line-height: 6.6rem;
 	text-align: center;
-	background: #cc005f;
+	background: #005bcc;
 	color: #FFFFFF;
 	text-align: center;
 	text-transform: uppercase;
