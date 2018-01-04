@@ -1,387 +1,1035 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Matthew Kim</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
-  <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
-  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-72x72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-114x114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-144x144-precomposed.png">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/normalize.min.css">
-  <link rel="stylesheet" href="css/main.css">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-  <script src="js/vendor/jquery.hashchange.min.js"></script>
-  <script src="js/vendor/jquery.easytabs.min.js"></script>
+   <!--- basic page needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>Matthew Kim</title>
+	<meta name="description" content="">  
+	<meta name="author" content="">
 
-  <script src="js/main.js"></script>
-  <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-      <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
-      <![endif]-->
+   <!-- mobile specific metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+ 	<!-- CSS
+   ================================================== -->
+   <link rel="stylesheet" href="css/base.css">  
+   <link rel="stylesheet" href="css/main.css">
+   <link rel="stylesheet" href="css/vendor.css">     
+
+   <!-- script
+   ================================================== -->   
+	<script src="js/modernizr.js"></script>
+	<script src="js/pace.min.js"></script>
+
+   <!-- favicons
+	================================================== -->
+	<link rel="icon" type="image/png" href="favicon.png">
+
 </head>
-  <body class="bg-fixed bg-1">
-<!--[if lt IE 7]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-    <![endif]-->
-   <div class="main-container">
-    <div class="main wrapper clearfix">
-      <!-- Header Start -->
-        <header id="header">
-            <div id="logo">
-                <h2>
-                    Matthew Kim
-                </h2>
-                <h4>
-                    2B Computer Engineer, Class of 2020
-                </h4>
-            </div>
-        </header>
-        <!-- Header End -->
-        <!-- Main Tab Container -->
-        <div id="tab-container" class="tab-container">
-          <!-- Tab List -->
-            <ul class='etabs'>
-                <li class='tab' id="tab-about">
-                  <a href="#about"><i class="icon-user"></i><span> About Me</span></a>
-                </li>
-                <li class='tab'>
-                  <a href="#resume"><i class="icon-file-text"></i><span> Resume</span></a>
-                </li>
-                <li class='tab'>
-                  <a href="#portfolio"><i class="icon-heart"></i><span> Portfolio</span></a>
-                </li>
-                <li class='tab'>
-                  <a href="#contact"><i class="icon-envelope"></i><span> Contact</span></a>
-                </li>
-            </ul>
-          <!-- End Tab List -->
-            <div id="tab-data-wrap">
-              <!-- About Tab Data -->
-                <div id="about">
-                    <section class="clearfix">
-                        <div class="g2">
-                            <div class="photo">
-                                <img src="IMG_6196.jpg" alt="Matthew Kim">
-                            </div>
-                            <div class="info">
-                                <h2>
-                                    Matthew Kim
-                                </h2>
-                                <h4>
-                                    2B Computer Engineer
-                                </h4>
-                                <p>
-                                    Student. Innovator. Coder. Gamer. Designer.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="g1">
-                            <div class="main-links sidebar">
-                                <ul>
-                                    <li>
-                                        <a href="#resume">View My Resume</a>
-                                    </li>
-                                    <li>
-                                        <a href="#portfolio">My Portfolio</a>
-                                    </li>
-                                    <li>
-                                        <a href="#contact">Hire me for your next project</a>
-                                    </li>
-                                    <li>
-                                        <a href="#features">Features</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="break"></div>
-                        <div class="contact-info">
-                          <div class="g1">
-                            <div class="item-box clearfix">
-                              <i class="icon-envelope"></i>
-                              <div class="item-data">
-                                <h3><a href="mailto:Matthew.Kim919@gmail.com">Matthew.Kim919@gmail.com</a></h3>
-                                <p>Email Address</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="g1">
-                            <div class="item-box clearfix">
-                              <i class="icon-linkedin"></i>
-                              <div class="item-data">
-                                <h3><a href="https://www.linkedin.com/in/matthew-kim-4b26188b/">matthew-kim-4b26188b</a></h3>
-                                <p>LinkedIn Profile</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="g1">
-                            <div class="item-box clearfix">
-                              <i class="icon-twitter"></i>
-                              <div class="item-data">
-                                <h3><a href="http://fb.me/matthew.kim.165">Matthew Kim</a></h3>
-                                <p>Facebook</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    </section><!-- content -->
-                </div>
-              <!-- End About Tab Data -->
-              <!-- Resume Tab Data -->
-                <div id="resume">
-                    <section class="clearfix">
-                        <div class="g2">
-                            <h3>
-                                Work Experience
-                            </h3>
-                            <ul class="no-list work">
-                                <li>
-                                    <h5>
-                                        Java Developer, PointClickCare
-                                    </h5><span class="label label-info">May. 2017 - Aug. 2017</span>
-                                    <p>
-                                        <ul>
-                                            <li>Successfully wrapped a Drools Rule Engine into a Spring Boot REST API web service with over 200 rules and a sample client API.</li>
-                                            <li>Incorporated basic HTTP authentication and support for both JSON and XML input/output using Spring annotations.</li>
-                                            <li>Used JMeter and VisualVM for load testing, ensuring CPU usage was under 5% and controlling garbage collection at 100 requests/sec.</li>
-                                            <li>Strong understanding of the Agile work environment and everyday use of Git/SourceTree to manage version control of all projects.</li>
-                                            <li>Expertise in using the ELK Stack (ElasticSearch, LogStash, Kibana) for log analysis, graphs, and dashboards.</li>
-                                        </ul>
-                                    </p>
-                                </li>
-                                <li>
-                                    <h5>
-                                        Automation Engineer, PointClickCare
-                                    </h5><span class="label label-info">Jan. - Apr. 2016 & Sep. - Dec. 2016</span>
-                                    <p>
-                                        <ul>
-                                            <li>Thoroughly involved in test automation which includes refactoring high level Java classes and page tests in Spring and Selenium, resulting in approximately 300 files committed and over 30 000 lines of code changed.</li>
-                                            <li>Effectively made use of the Page Object and Page Test Design Pattern to improve overall code quality, extensibility, and structure.</li>
-                                            <li>Proficient use of HTML, CSS, and Xpath to repair front-end locator issues, fixing over 50 bugs within the application.</li>
-                                            <li>Strong understanding of the Agile work environment and everyday use of Git/SourceTree to manage version control of all projects.</li>
-                                            <li>Independently automated End-to-End test cases to reduce manual regression tasks on QAs, while achieving 99.9% code coverage on a complex team project. Taught full-time QAs with no prior coding experience the concept of Java and automation.</li>
-                                        </ul>
-                                    </p>
-                                </li>
-                                <li>
-                                    <h5>
-                                        Website Developer, Spot Cinema Inc.
-                                    </h5><span class="label label-info">Jul. 2014 - Aug. 2014</span>
-                                    <p>
-                                        <ul>
-                                            <li>Successfully optimized company website up to 50% by combining sprites, browser caching, and defer parsing.</li>
-                                            <li>Increased the Search Engine Optimization by defining key words, adding appropriate page URLs, and improving page content, resulting in the website appearing on the first page of Google.</li>
-                                        </ul>
-                                    </p>
-                                </li>
-                            </ul>
-                            <h3>
-                                Education
-                            </h3>
-                            <ul class="no-list work">
-                                <li>
-                                    <h5>
-                                        University of Waterloo
-                                    </h5><span class="label label-success">2015-Present</span>
-                                    <p>
-                                        <ul>
-                                            <li>Candidate for Bachelor of Applied Science, Computer Engineering</li>
-                                            <li>President's Scholarship</li>
-                                        </ul>
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="g1">
-                            <div class="sidebar">
-                                <h3>
-                                    Skills
-                                </h3>
-                                <h5>
-                                    Tools and Concepts
-                                </h5>
-                                <div class="meter emerald">
-                                    <span style="width: 90%"><span>Agile</span></span>
-                                </div>
-                                <div class="meter carrot">
-                                    <span style="width: 75%"><span>Git</span></span>
-                                </div>
-                                <div class="meter wisteria">
-                                    <span style="width: 70%"><span>Subversion</span></span>
-                                </div>
-                                <div class="meter sunflower">
-                                    <span style="width: 80%"><span>Object Oriented Programming</span></span>
-                                </div>
-                                <div class="meter emerald">
-                                    <span style="width: 70%"><span>MVC</span></span>
-                                </div>
-                                <div class="meter carrot">
-                                    <span style="width: 75%"><span>REST API</span></span>
-                                </div>
-                                <div class="meter wisteria">
-                                    <span style="width: 40%"><span>SQL</span></span>
-                                </div>
-                                <div class="meter sunflower">
-                                    <span style="width: 65%"><span>Spring</span></span>
-                                </div>
-                                <div class="meter emerald">
-                                    <span style="width: 90%"><span>ElasticSearch</span></span>
-                                </div>
-                                 <div class="meter carrot">
-                                    <span style="width: 65%"><span>JMeter & VisualVM</span></span>
-                                </div>
-                                <div class="break"></div>
-                                <h5>
-                                    Programming Languages
-                                </h5>
-                                <div class="meter emerald">
-                                    <span style="width: 80%"><span>Java</span></span>
-                                </div>
-                                <div class="meter carrot">
-                                    <span style="width: 60%"><span>C++</span></span>
-                                </div>
-                                <div class="meter wisteria">
-                                    <span style="width: 50%"><span>C</span></span>
-                                </div>
-                                <div class="meter sunflower">
-                                    <span style="width: 65%"><span>HTML/CSS</span></span>
-                                </div>
-                                <div class="meter emerald">
-                                    <span style="width: 75%"><span>JSON/XML</span></span>
-                                </div>
-                                <div class="meter carrot">
-                                    <span style="width: 70%"><span>Drools</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-              <!-- End Resume Tab Data -->
-              <!-- Portfolio Tab Data -->
-                <div id="portfolio">
-                    <section class="clearfix">
-                        <div class="g1">
-                            <div class="image">
-                                <img src="http://lorempixel.com/306/306/sports/4" alt="">
-                                <div class="image-overlay">
-                                    <div class="image-link">
-                                        <a href="http://lorempixel.com/306/306/sports/4" class="btn">Full View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="g1">
-                            <div class="image">
-                                <img src="http://lorempixel.com/306/306/sports/4" alt="">
-                                <div class="image-overlay">
-                                    <div class="image-link">
-                                        <a href="http://lorempixel.com/306/306/sports/4" class="btn">Full View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="g1">
-                            <div class="image">
-                                <img src="http://lorempixel.com/306/306/sports/4" alt="">
-                                <div class="image-overlay">
-                                    <div class="image-link">
-                                        <a href="http://lorempixel.com/306/306/sports/4" class="btn">Full View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="break"></div>
-                        <div class="g1">
-                            <div class="image">
-                                <img src="http://lorempixel.com/306/306/sports/4" alt="">
-                                <div class="image-overlay">
-                                    <div class="image-link">
-                                        <a href="http://lorempixel.com/606/606/sports/4" class="btn">Full View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="g1">
-                            <div class="image">
-                                <img src="http://lorempixel.com/306/306/sports/4" alt="">
-                                <div class="image-overlay">
-                                    <div class="image-link">
-                                        <a href="http://lorempixel.com/306/306/sports/4" class="btn">Full View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="g1">
-                            <div class="image">
-                                <img src="http://lorempixel.com/306/306/sports/4" alt="">
-                                <div class="image-overlay">
-                                    <div class="image-link">
-                                        <a href="http://lorempixel.com/306/306/sports/4" class="btn">Full View</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </section>
-                </div>
-              <!-- End Portfolio Data -->
-              <!-- Contact Tab Data -->
-                <div id="contact">
-                    <section class="clearfix">
-                       <div class="g1">
-                         <div class="sny-icon-box">
-                           <div class="sny-icon">
-                              <i class="icon-globe"></i>
-                            </div>
-                            <div class="sny-icon-content">
-                              <h4>My Address</h4>
-                              <p>Some Apartment 405 in a jungle nearby a restaurant</p>
-                            </div>
-                         </div>
-                       </div>
-                       <div class="g1">
-                         <div class="sny-icon-box">
-                           <div class="sny-icon">
-                              <i class="icon-phone"></i>
-                            </div>
-                            <div class="sny-icon-content">
-                              <h4>Mobile Number</h4>
-                              <p>(+1) 647-707-1683</p>
-                            </div>
-                         </div>
-                       </div>
-                       <div class="g1">
-                         <div class="sny-icon-box">
-                           <div class="sny-icon">
-                              <i class="icon-user"></i>
-                            </div>
-                            <div class="sny-icon-content">
-                              <h4>About Me</h4>
-                              <p>I love to work, so don't be shy, i am just an email away.</p>
-                            </div>
-                         </div>
-                       </div>
-                       <div class="break"></div>
-                       
-                    </section>
-                </div>
-              <!-- End Contact Data -->
-            </div>
-        </div>
-        <!-- End Tab Container -->
-    </div><!-- #main -->
-</div><!-- #main-container -->
+
+<body id="top">
+
+	<!-- header 
+   ================================================== -->
+   <!--<header>   	
+   	<div class="row">
+
+   		<div class="top-bar">
+   			<a class="menu-toggle" href="#"><span>Menu</span></a>
+
+	   		<div class="logo">
+		         <a href="index.html">KARDS</a>
+		      </div>		      
+
+		   	<nav id="main-nav-wrap">
+					<ul class="main-navigation">
+						<li class="current"><a class="smoothscroll"  href="#intro" title="">Home</a></li>
+						<li><a class="smoothscroll"  href="#about" title="">About</a></li>
+						<li><a class="smoothscroll"  href="#resume" title="">Resume</a></li>
+						<li><a class="smoothscroll"  href="#portfolio" title="">Portfolio</a></li>
+						<li><a class="smoothscroll"  href="#services" title="">Services</a></li>					
+						<li><a class="smoothscroll"  href="#contact" title="">Contact</a></li>	
+						<li><a href="styles.html" title="">Style Demo</a></li>				
+					</ul>
+				</nav>    		
+   		</div> <!-- /top-bar --> 
+   		
+   	<!--</div> <!-- /row --> 		
+   <!--</header> <!-- /header -->
+
+	<!-- intro section
+   ================================================== -->
+   <section id="intro">   
+
+   	<div class="intro-overlay"></div>	
+
+   	<div class="intro-content">
+   		<div class="row">
+
+   			<div class="col-twelve">
+
+	   			<h5>I'm</h5>
+	   			<h1>Matthew Kim</h1>
+
+	   			<p class="intro-position">
+	   				<span>2B Computer Engineer</span>
+	   				<span>Java Developer</span> 
+	   			</p>
+
+	   			<a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
+
+	   		</div>  
+   			
+   		</div>   		 		
+   	</div> <!-- /intro-content --> 
+
+   	<ul class="intro-social">        
+         <li><a href="#"><i class="fa fa-email"></i></a></li>
+         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+         <li><a href="#"><i class="fa fa-github"></i></a></li>
+      </ul> <!-- /intro-social -->      	
+
+   </section> <!-- /intro -->
 
 
+   <!-- about section
+   ================================================== -->
+   <section id="about">  
+
+   	<div class="row section-intro">
+   		<div class="col-twelve">
+
+   			<h5>About</h5>
+   			<h1>Let me introduce myself.</h1>
+
+   			<div class="intro-info">
+
+   				<img src="images/profile-pic.jpg" alt="Profile Picture">
+
+   				<p class="lead">Lorem ipsum Exercitation culpa qui dolor consequat exercitation fugiat laborum ex ea eiusmod ad do aliqua occaecat nisi ad irure sunt id pariatur Duis laboris amet exercitation veniam labore consectetur ea id quis eiusmod.</p>
+   			</div>   			
+
+   		</div>   		
+   	</div> <!-- /section-intro -->
+
+   	<div class="row about-content">
+
+   		<div class="col-six tab-full">
+
+   			<h3>Profile</h3>
+   			<p>Lorem ipsum Qui veniam ut consequat ex ullamco nulla in non ut esse in magna sint minim officia consectetur nisi commodo ea magna pariatur nisi cillum.</p>
+
+   			<ul class="info-list">
+   				<li>
+   					<strong>Fullname:</strong>
+   					<span>Matthew Minsung Kim</span>
+   				</li>
+   				<li>
+   					<strong>Birth Date:</strong>
+   					<span>October 15, 1997</span>
+   				</li>
+   				<li>
+   					<strong>Education:</strong>
+   					<span>Candidate for Bachelor of Applied Science, University of Waterloo</span>
+   				</li>
+				<li>
+   					<strong>Specialty:</strong>
+   					<span>Java Development</span>
+   				</li>
+   				<li>
+   					<strong>Email:</strong>
+   					<span>Matthew.Kim919@gmail.com</span>
+   				</li>
+   				<li>
+   					<strong>Linkedin:</strong>
+   					<span>matthew-kim-4b26188b</span>
+   				</li>
+
+   			</ul> <!-- /info-list -->
+
+   		</div>
+
+   		<div class="col-six tab-full">
+
+   			<h3>Skills</h3>
+   			<p>Lorem ipsum Qui veniam ut consequat ex ullamco nulla in non ut esse in magna sint minim officia consectetur nisi commodo ea magna pariatur nisi cillum.</p>
+
+				<ul class="skill-bars">
+				   <li>
+				   	<div class="progress percent85"><span>85%</span></div>
+				   	<strong>Java</strong>
+				   </li>
+				   <li>
+				   	<div class="progress percent70"><span>70%</span></div>
+				   	<strong>C++</strong>
+				   </li>
+				   <li>
+				   	<div class="progress percent60"><span>60%</span></div>
+				   	<strong>C</strong>
+				   </li>
+				   <li>
+				   	<div class="progress percent75"><span>75%</span></div>
+				   	<strong>HTML/CSS</strong>
+				   </li>
+				   <li>
+				   	<div class="progress percent80"><span>80%</span></div>
+				   	<strong>ElasticSearch</strong>
+				   </li>
+				   <li>
+				   	<div class="progress percent75"><span>75%</span></div>
+				   	<strong>Drools</strong>
+				   </li>
+				   <li>
+				   	<div class="progress percent70"><span>70%</span></div>
+				   	<strong>REST API</strong>
+				   </li>
+      
+				</ul> <!-- /skill-bars -->		
+
+   		</div>
+
+   	</div>
+
+   	<div class="row button-section">
+   		<div class="col-twelve">
+   			<a href="#contact" title="Get in Contact" class="button stroke smoothscroll">Hire Me</a>
+   			<a href="#" title="Download CV" class="button button-primary">Download CV</a>
+   		</div>   		
+   	</div>
+
+   </section> <!-- /process-->    
+
+
+   <!-- resume Section
+   ================================================== -->
+	<section id="resume" class="grey-section">
+
+		<div class="row section-intro">
+   		<div class="col-twelve">
+
+   			<h5>Resume</h5>
+   			<h1>More of my credentials.</h1>
+
+   			<p class="lead">______________________________</p>
+
+   		</div>   		
+   	</div> <!-- /section-intro--> 
+
+   	<div class="row resume-timeline">
+
+   		<div class="col-twelve resume-header">
+
+   			<h2>Work Experience</h2>
+
+   		</div> <!-- /resume-header -->
+
+   		<div class="col-twelve">
+
+   			<div class="timeline-wrap">
+
+   				<div class="timeline-block">
+
+	   				<div class="timeline-ico">
+	   					<i class="fa fa-graduation-cap"></i>
+	   				</div>
+
+	   				<div class="timeline-header">
+	   					<h3>Java Developer</h3>
+	   					<p>May. 2017 - Aug. 2017</p>
+	   				</div>
+
+	   				<div class="timeline-content">
+	   					<h4>PointClickCare</h4>
+	   					<p>• Successfully wrapped a Drools Rule Engine into a Spring Boot REST API web service with over 200 rules and a sample client API.</p>
+						<p>• Incorporated basic HTTP authentication and support for both JSON and XML input/output using Spring annotations.</p>
+						<p>• Used JMeter and VisualVM for load testing, ensuring CPU usage was under 5% and controlling garbage collection at 100 requests/sec.</p>
+						<p>• Strong understanding of the Agile work environment and everyday use of Git/SourceTree to manage version control of all projects.</p>
+						<p>• Expertise in using the ELK Stack (ElasticSearch, LogStash, Kibana) for log analysis, graphs, and dashboards.</p>
+	   				</div>
+
+	   			</div> <!-- /timeline-block -->
+
+	   			<div class="timeline-block">
+
+	   				<div class="timeline-ico">
+	   					<i class="fa fa-graduation-cap"></i>
+	   				</div>
+
+	   				<div class="timeline-header">
+	   					<h3>Automation Engineer</h3>
+	   					<p>Sep. 2016 - Dec. 2016</p>
+						<p>Jan. 2016 - Apr. 2016</p>
+	   				</div>
+
+	   				<div class="timeline-content">
+	   					<h4>PointClickCare</h4>
+	   					<p>• Thoroughly involved in test automation which includes refactoring high level Java classes and page tests in Spring and Selenium, resulting in approximately 300 files committed and over 30 000 lines of code changed.</p>
+						<p>• Effectively made use of the Page Object and Page Test Design Pattern to improve overall code quality, extensibility, and structure.</p>
+						<p>• Proficient use of HTML, CSS, and Xpath to repair front-end locator issues, fixing over 50 bugs within the application.</p>
+						<p>• Independently automated End-to-End test cases to reduce manual regression tasks on QAs, while achieving 99.9% code coverage on a complex team project. Taught full-time QAs with no prior coding experience the concept of Java and automation.</p>
+	   				</div>
+
+	   			</div> <!-- /timeline-block -->
+
+	   			<div class="timeline-block">
+
+	   				<div class="timeline-ico">
+	   					<i class="fa fa-graduation-cap"></i>
+	   				</div>
+
+	   				<div class="timeline-header">
+	   					<h3>Website Developer</h3>
+	   					<p>Jul. 2014 - Aug. 2014</p>
+	   				</div>
+
+	   				<div class="timeline-content">
+	   					<h4>Spot Cinema Inc.</h4>
+	   					<p>• Successfully optimized company website up to 50% by combining sprites, browser caching, and defer parsing.</p>
+						<p>• Increased the Search Engine Optimization by defining key words, adding appropriate page URLs, and improving page content, resulting in the website appearing on the first page of Google.</p>
+	   				</div>
+
+	   			</div> <!-- /timeline-block -->
+
+   			</div> <!-- /timeline-wrap -->   			
+
+   		</div> <!-- /col-twelve -->
+   		
+   	</div> <!-- /resume-timeline -->
+   	
+   	<div class="row resume-timeline">
+
+   		<div class="col-twelve resume-header">
+
+   			<h2>Projects</h2>
+
+   		</div> <!-- /resume-header -->
+
+   		<div class="col-twelve">
+
+   			<div class="timeline-wrap">
+
+   				<div class="timeline-block">
+
+	   				<div class="timeline-ico">
+	   					<i class="fa fa-briefcase"></i>
+	   				</div>
+
+	   				<div class="timeline-header">
+	   					<h3>Ontario Skills Robotics Team</h3>
+	   					<p>2015</p>
+	   				</div>
+
+	   				<div class="timeline-content">
+	   					<h4>1st Place</h4>
+	   					<p>Built an Arduino robot that retrieves miscellaneous objects and places them on a tall pyramid.</p>
+	   				</div>
+
+	   			</div> <!-- /timeline-block -->
+
+	   			<div class="timeline-block">
+
+	   				<div class="timeline-ico">
+	   					<i class="fa fa-briefcase"></i>
+	   				</div>
+
+	   				<div class="timeline-header">
+	   					<h3>Skills Canada Robotics Team</h3>
+	   					<p>2014</p>
+	   				</div>
+
+	   				<div class="timeline-content">
+	   					<h4>Finalist</h4>
+	   					<p>Built an Arduino robot that traces a black line and retrieves a pale. Tested for speed & accuracy.</p>
+	   				</div>
+
+	   			</div> <!-- /timeline-block -->
+
+	   			<div class="timeline-block">
+
+	   				<div class="timeline-ico">
+	   					<i class="fa fa-briefcase"></i>
+	   				</div>
+
+	   				<div class="timeline-header">
+	   					<h3>FIRST Robotics Team</h3>
+	   					<p>2013</p>
+	   				</div>
+
+	   				<div class="timeline-content">
+	   					<h4>Finalist</h4>
+	   					<p>Built an Arduino and C++ robot that accurately shoots Frisbee discs using jaguars.</p>
+	   				</div>
+
+	   			</div> <!-- /timeline-block -->
+				
+				<div class="timeline-block">
+
+	   				<div class="timeline-ico">
+	   					<i class="fa fa-briefcase"></i>
+	   				</div>
+
+	   				<div class="timeline-header">
+	   					<h3>Science Olympics, Engineering</h3>
+	   					<p>2014</p>
+	   				</div>
+
+	   				<div class="timeline-content">
+	   					<h4>1st Place</h4>
+	   					<p>Designed a popsicle stick bridge within a given time frame to shoot at a target that was purely tested for strength, and accuracy.</p>
+	   				</div>
+
+	   			</div> <!-- /timeline-block -->
+				
+				<div class="timeline-block">
+
+	   				<div class="timeline-ico">
+	   					<i class="fa fa-briefcase"></i>
+	   				</div>
+
+	   				<div class="timeline-header">
+	   					<h3>Science Olympics, Engineering</h3>
+	   					<p>2013</p>
+	   				</div>
+
+	   				<div class="timeline-content">
+	   					<h4>3rd Place</h4>
+	   					<p>Constructed a cardboard catapult to launch items. Emphasis on accuracy, design, and power.</p>
+	   				</div>
+
+	   			</div> <!-- /timeline-block -->
+				
+				<div class="timeline-block">
+
+	   				<div class="timeline-ico">
+	   					<i class="fa fa-briefcase"></i>
+	   				</div>
+
+	   				<div class="timeline-header">
+	   					<h3>Video Game Design Team</h3>
+	   					<p>2013 - 2015</p>
+	   				</div>
+
+	   				<div class="timeline-content">
+	   					<h4>GameMaker Studio, Construct 2</h4>
+	   					<p>• Effectively used game creation systems such as GameMaker Studio and Construct 2 to design a 2D side-scrolling platform.</p>
+						<p>• Gained expertise in video game design presentation and project life cycles through alpha, beta, and gold design phases.</p>
+	   				</div>
+
+	   			</div> <!-- /timeline-block -->
+
+   			</div> <!-- /timeline-wrap -->   			
+
+   		</div> <!-- /col-twelve -->
+   		
+   	</div> <!-- /resume-timeline -->
+		
+	</section> <!-- /features -->
+
+
+	<!-- Portfolio Section
+   ================================================== -->
+	<!--<section id="portfolio">
+
+		<div class="row section-intro">
+   		<div class="col-twelve">
+
+   			<h5>Portfolio</h5>
+   			<h1>Check Out Some of My Works.</h1>
+
+   			<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
+
+   		</div>   		
+   	</div> <!-- /section-intro-->
+
+   	<!--<div class="row portfolio-content">
+
+   		<div class="col-twelve">
+
+   			<!-- portfolio-wrapper -->
+	         <!--<div id="folio-wrapper" class="block-1-2 block-mob-full stack">
+
+	         	<div class="bgrid folio-item">
+	               <div class="item-wrap">
+	               	<img src="images/portfolio/liberty.jpg" alt="Liberty">
+	                  <a href="#modal-01" class="overlay">	                  	           
+	                     <div class="folio-item-table">
+	                     	<div class="folio-item-cell">
+		     					       <h3 class="folio-title">Liberty</h3>	     					    
+		     					    	 <span class="folio-types">
+		     					       	  Graphic Design
+		     					       </span>
+		     					   </div>	                      	
+	                     </div>                    
+	                  </a>
+	               </div>	               
+	        		</div> <!-- /folio-item --> 
+
+	        		<!--<div class="bgrid folio-item">
+	               <div class="item-wrap">
+	               	<img src="images/portfolio/shutterbug.jpg" alt="Shutterbug">
+	               	<a href="#modal-02" class="overlay">              		                  
+	                     <div class="folio-item-table">
+	                     	<div class="folio-item-cell">
+	                     		<h3 class="folio-title">Shutterbug</h3>	     					    
+		     					    	<span class="folio-types">
+		     					       	  Web Design
+		     					      </span>		     		
+		     					   </div> 	                      	
+	                     </div>                    
+	                  </a>
+	               </div>
+	        		</div> <!-- /folio-item -->
+
+	            <!--<div class="bgrid folio-item">
+	               <div class="item-wrap">
+	               	<img src="images/portfolio/clouds.jpg"alt="Clouds">
+	                  <a href="#modal-03" class="overlay">             		                  
+	                     <div class="folio-item-table">
+	                     	<div class="folio-item-cell">
+	                     		<h3 class="folio-title">Clouds</h3>	     					    
+		     					    	<span class="folio-types">
+		     					       	  Web Design
+		     					      </span>		     		
+		     					   </div> 	                      	
+	                     </div>                    
+	                  </a>
+	               </div>
+	        		</div> <!-- /folio-item -->
+
+	            <!--<div class="bgrid folio-item">
+	               <div class="item-wrap">
+	               	<img src="images/portfolio/beetle.jpg" alt="Beetle">
+	                  <a href="#modal-04" class="overlay">                  	                 
+	                     <div class="folio-item-table">
+	                     	<div class="folio-item-cell">
+	                     		<h3 class="folio-title">Beetle</h3>	     					    
+		     					    	<span class="folio-types">
+		     					       	  Branding
+		     					      </span>		     		
+		     					   </div>  	                      	
+	                     </div>                    
+	                  </a>
+	               </div>
+	        		</div> <!-- /folio-item -->     
+
+	        		<!--<div class="bgrid folio-item">
+	               <div class="item-wrap">
+	               	<img src="images/portfolio/lighthouse.jpg" alt="Lighthouse">
+	                  <a href="#modal-05" class="overlay">             		                  
+	                     <div class="folio-item-table">
+	                     	<div class="folio-item-cell">
+	                     		<h3 class="folio-title">Lighthouse</h3>	     					    
+		     					    	<span class="folio-types">
+		     					       	  Web Development
+		     					      </span>		     		
+		     					   </div> 	                      	
+	                     </div>                    
+	                  </a>
+	               </div>
+	        		</div> <!-- /folio-item -->
+
+	            <!--<div class="bgrid folio-item">
+	               <div class="item-wrap">
+	               	<img src="images/portfolio/salad.jpg" alt="Salad">
+	                  <a href="#modal-06" class="overlay">
+	                     <div class="folio-item-table">
+	                     	<div class="folio-item-cell">
+	                     		<h3 class="folio-title">Salad</h3>	     					    
+		     					    	<span class="folio-types">
+		     					       	  Branding
+		     					      </span>		     		
+		     					   </div>	                      	
+	                     </div>                    
+	                  </a>
+	               </div>
+	        		</div> <!-- /folio-item -->   
+
+	            <!-- modal popups - begin
+	            ============================================================= -->
+	            <!--<div id="modal-01" class="popup-modal slider mfp-hide">	
+
+				     	<div class="media">
+				     		<img src="images/portfolio/modals/m-liberty.jpg" alt="" />
+				     	</div>      	
+
+					   <div class="description-box">
+					      <h4>Liberty</h4>		      
+					      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+
+					      <div class="categories">Web Development</div>			               
+					   </div>
+
+			         <div class="link-box">
+			            <a href="http://www.behance.net">Details</a>
+					      <a href="#" class="popup-modal-dismiss">Close</a>
+			         </div>		      
+
+				   </div> <!-- /modal-01 -->
+
+				   <!--<div id="modal-02" class="popup-modal slider mfp-hide">	
+
+				     	<div class="media">
+				     		<img src="images/portfolio/modals/m-shutterbug.jpg" alt="" />
+				     	</div>      	
+
+					   <div class="description-box">
+					      <h4>Shutterbug</h4>		      
+					      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+
+					      <div class="categories">Web Design</div>			               
+					   </div>
+
+			         <div class="link-box">
+			            <a href="http://www.behance.net">Details</a>
+					      <a href="#" class="popup-modal-dismiss">Close</a>
+			         </div>		      
+
+				   </div> <!-- /modal-02 -->
+
+				   <!--<div id="modal-03" class="popup-modal slider mfp-hide">	
+
+				     	<div class="media">
+				     		<img src="images/portfolio/modals/m-clouds.jpg" alt="" />
+				     	</div>      	
+
+					   <div class="description-box">
+					      <h4>Clouds</h4>		      
+					      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+
+					      <div class="categories">Web Design</div>			               
+					   </div>
+
+			         <div class="link-box">
+			            <a href="http://www.behance.net">Details</a>
+					      <a href="#" class="popup-modal-dismiss">Close</a>
+			         </div>		      
+
+				   </div> <!-- /modal-03 -->
+
+				   <!--<div id="modal-04" class="popup-modal slider mfp-hide">	
+
+				     	<div class="media">
+				     		<img src="images/portfolio/modals/m-beetle.jpg" alt="" />
+				     	</div>      	
+
+					   <div class="description-box">
+					      <h4>Beetle</h4>		      
+					      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+
+					      <div class="categories">Branding</div>			               
+					   </div>
+
+			         <div class="link-box">
+			            <a href="http://www.behance.net">Details</a>
+					      <a href="#" class="popup-modal-dismiss">Close</a>
+			         </div>		      
+
+				   </div> <!-- /modal-04 -->
+
+				   <!--<div id="modal-05" class="popup-modal slider mfp-hide">	
+
+				     	<div class="media">
+				     		<img src="images/portfolio/modals/m-lighthouse.jpg" alt="" />
+				     	</div>      	
+
+					   <div class="description-box">
+					      <h4>Lighthouse</h4>		      
+					      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+
+					      <div class="categories">Web Development</div>			               
+					   </div>
+
+			         <div class="link-box">
+			            <a href="http://www.behance.net">Details</a>
+					      <a href="#" class="popup-modal-dismiss">Close</a>
+			         </div>		      
+
+				   </div> <!-- /modal-05 -->
+
+				   <!--<div id="modal-06" class="popup-modal slider mfp-hide">	
+
+				     	<div class="media">
+				     		<img src="images/portfolio/modals/m-salad.jpg" alt="" />
+				     	</div>      	
+
+					   <div class="description-box">
+					      <h4>Salad</h4>		      
+					      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
+
+					      <div class="categories">Branding</div>			               
+					   </div>
+
+			         <div class="link-box">
+			            <a href="http://www.behance.net">Details</a>
+					      <a href="#" class="popup-modal-dismiss">Close</a>
+			         </div>		      
+
+				   </div> <!-- /modal-06 -->
+
+
+				   <!-- modal popups - end
+	            ============================================================= -->
+
+	         <!--</div> <!-- /portfolio-wrapper --> 
+
+   		<!--</div>  <!-- /twelve -->   
+
+   	<!--</div> <!-- /portfolio-content --> 
+		
+	<!--</section> <!-- /portfolio --> 
+
+	<!-- services Section
+   ================================================== -->
+	<!--<section id="services">
+
+		<div class="overlay"></div>
+
+		<div class="row section-intro">
+   		<div class="col-twelve">
+
+   			<h5>Services</h5>
+   			<h1>What Can I Do For You?</h1>
+
+   			<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
+
+   		</div>   		
+   	</div> <!-- /section-intro -->
+
+   	<!--<div class="row services-content">
+
+   		<div id="owl-slider" class="owl-carousel services-list">
+
+	      	<div class="service">	
+
+	      		<span class="icon"><i class="icon-earth"></i></span>            
+
+	            <div class="service-content">	
+
+	            	 <h3>Webdesign</h3>
+
+		            <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+	         		</p>
+	         		
+	         	</div> 	         	 
+
+				</div> <!-- /service -->
+
+				<!--<div class="service">	
+
+					<span class="icon"><i class="icon-window"></i></span>                          
+
+	            <div class="service-content">	
+
+	            	<h3>Web Development</h3>  
+
+		            <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+	         		</p>
+
+	            </div>	                          
+
+			   </div> <!-- /service -->
+
+			   <!--<div class="service">
+
+			   	<span class="icon"><i class="icon-paint-brush"></i></span>		            
+
+	            <div class="service-content">
+
+	            	<h3>Branding</h3>
+
+		            <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+	        			</p> 
+
+	            </div> 	            	               
+
+			   </div> <!-- /service -->
+
+				<!--<div class="service">
+
+					<span class="icon"><i class="icon-toggles"></i></span>	              
+
+	            <div class="service-content">
+
+	            	<h3>UI/UX Design</h3>
+
+		            <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+	         		</p> 
+	         		
+	            </div>                
+
+				</div> <!-- /service -->
+
+			   <!--<div class="service">
+
+			   	<span class="icon"><i class="icon-image"></i></span>	            
+
+	            <div class="service-content">
+
+	            	<h3>Graphics Design</h3>
+
+		            <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+	        			</p> 
+
+	            </div>	               
+
+			   </div> <!-- /service -->
+
+			   <!--<div class="service">
+
+			   	<span class="icon"><i class="icon-chat"></i></span>	   	           
+
+	            <div class="service-content">
+
+	            	 <h3>Consultancy</h3>
+
+		            <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+	        			</p> 
+	        			
+	            </div>	               
+
+			   </div> <!-- /service -->
+
+	      <!--</div> <!-- /services-list -->
+   		
+   	<!--</div> <!-- /services-content -->
+		
+	<!--</section> <!-- /services -->	
+
+
+	<!-- stats Section
+   ================================================== -->
+	<section id="stats" class="count-up">
+
+		<div class="row">
+			<div class="col-twelve">
+
+				<div class="block-1-6 block-s-1-3 block-tab-1-2 block-mob-full stats-list">
+
+					<div class="bgrid stat">
+
+						<div class="icon-part">
+							<i class="icon-pencil-ruler"></i>
+						</div>
+
+						<h3 class="stat-count">
+							10334
+						</h3>
+
+						<h5 class="stat-title">
+							Lines of Code
+						</h5>
+
+					</div> <!-- /stat -->														
+
+					<div class="bgrid stat">
+
+						<div class="icon-part">
+							<i class="icon-light-bulb"></i>
+						</div>
+
+						<h3 class="stat-count">
+							201
+						</h3>
+
+						<h5 class="stat-title">
+							Crazy Ideas
+						</h5>
+
+					</div> <!-- /stat -->
+
+					<div class="bgrid stat">
+
+						<div class="icon-part">
+							<i class="icon-cup"></i>
+						</div>
+
+						<h3 class="stat-count">
+							752
+						</h3>
+
+						<h5 class="stat-title">
+							Coffee Cups
+						</h5>
+
+					</div> <!-- /stat -->
+
+					<div class="bgrid stat">
+
+						<div class="icon-part">
+							<i class="icon-clock"></i>
+						</div>
+
+						<h3 class="stat-count">
+							506 730
+						</h3>
+
+						<h5 class="stat-title">
+							Hours Worked
+						</h5>
+
+					</div> <!-- /stat -->
+					
+					<div class="bgrid stat">
+
+						<div class="icon-part">
+							<i class="icon-badge"></i>
+						</div>
+
+						<h3 class="stat-count">
+							21
+						</h3>
+
+						<h5 class="stat-title">
+							Awards
+						</h5>
+
+					</div> <!-- /stat -->
+
+				</div> <!-- /stats-list -->
+
+			</div> <!-- /twelve -->
+		</div> <!-- /row -->
+
+	</section> <!-- /stats -->
+
+	
+   <!-- contact
+   ================================================== -->
+	<section id="contact">
+
+		<div class="row section-intro">
+   		<div class="col-twelve">
+
+   			<h5>Contact</h5>
+   			<h1>I'd Love To Hear From You.</h1>
+
+   			<p class="lead"></p>
+
+   		</div> 
+   	</div> <!-- /section-intro -->
+
+   	<div class="row contact-form">
+
+   		<div class="col-twelve">
+
+            <!-- form -->
+            <form name="contactForm" id="contactForm" method="post" action="">
+      			<fieldset>
+
+                  <div class="form-field">
+ 						   <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required="">
+                  </div>
+                  <div class="form-field">
+	      			   <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required="">
+	               </div>
+                  <div class="form-field">
+	     				   <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value="">
+	               </div>                       
+                  <div class="form-field">
+	                 	<textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
+	               </div>                      
+                 <div class="form-field">
+                     <button class="submitform">Submit</button>
+                     <div id="submit-loader">
+                        <div class="text-loader">Sending...</div>                             
+       				      <div class="s-loader">
+								  	<div class="bounce1"></div>
+								  	<div class="bounce2"></div>
+								  	<div class="bounce3"></div>
+								</div>
+							</div>
+                  </div>
+
+      			</fieldset>
+      		</form> <!-- Form End -->
+
+            <!-- contact-warning -->
+            <div id="message-warning">            	
+            </div>            
+            <!-- contact-success -->
+      		<div id="message-success">
+               <i class="fa fa-check"></i>Your message was sent, thank you!<br>
+      		</div>
+
+         </div> <!-- /col-twelve -->
+   		
+   	</div> <!-- /contact-form -->
+
+   	<div class="row contact-info">
+
+   		<div class="col-four tab-full">
+
+   			<div class="icon">
+   				<i class="icon-pin"></i>
+   			</div>
+
+   			<h5>Where to find me</h5>
+
+   			<p>
+            330 Philip St.<br>
+           Waterloo, ON<br>
+            N2L 3W9
+            </p>
+
+   		</div>
+
+   		<div class="col-four tab-full collapse">
+
+   			<div class="icon">
+   				<i class="icon-mail"></i>
+   			</div>
+
+   			<h5>Email Me At</h5>
+
+   			<p>Matthew.Kim919@gmail.com<br>
+			   	m234kim@edu.uwaterloo.ca			     
+			   </p>
+
+   		</div>
+
+   		<div class="col-four tab-full">
+
+   			<div class="icon">
+   				<i class="icon-phone"></i>
+   			</div>
+
+   			<h5>Call Me At</h5>
+
+   			<p>Mobile: (+1) 647 707 1683</p>
+
+   		</div>
+   		
+   	</div> <!-- /contact-info -->
+		
+	</section> <!-- /contact -->
+
+
+   <!-- footer
+   ================================================== -->
+
+   <footer>
+     	<div class="row">
+		<div id="go-top">
+			<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+		</div>
+      	</div>  	
+   </footer>  
+
+   <div id="preloader"> 
+    	<div id="loader"></div>
+   </div> 
+
+   <!-- Java Script
+   ================================================== --> 
+   <script src="js/jquery-2.1.3.min.js"></script>
+   <script src="js/plugins.js"></script>
+   <script src="js/main.js"></script>
 
 </body>
+
 </html>
