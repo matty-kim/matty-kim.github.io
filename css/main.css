@@ -140,13 +140,13 @@ h4, .h04 {
 h5, .h05 {
 	font-size: 1.4rem;
 	line-height: 1.714;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: .15rem;
 }
 h6, .h06 {
 	font-size: 1.3rem;
 	line-height: 1.846;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: .15rem;
 }
 p img {
@@ -654,7 +654,7 @@ input[type="button"] {
 	display: inline-block;
 	font-family: "poppins-bold", sans-serif;
 	font-size: 1.4rem;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: .3rem;
 	height: 5.4rem;
 	line-height: 5.4rem;
@@ -957,7 +957,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	top: -3rem;
 	font-family: "poppins-bold", sans-serif;
 	color: #313131;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: .2rem;
 	font-size: 1.5rem;
 	line-height: 2.4rem;
@@ -1342,7 +1342,7 @@ header .logo a {
 	font-size: 2.3rem;
 	line-height: 1.565;
 	margin-bottom: 0;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: .3rem;
 	text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
 }
@@ -1350,7 +1350,7 @@ header .logo a {
 	font-family: "lora-regular", serif;
 	font-size: 1.7rem;
 	line-height: 2.4rem;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: .2rem;
 	color: #FFFFFF;
 	text-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
@@ -1380,7 +1380,7 @@ header .logo a {
 	padding: 0 3.5rem 0 3rem !important;
 	margin-top: .6rem;
 	font-size: 1.3rem;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: .25rem;
 }
 .intro-content .button:hover, .intro-content .button:focus {
@@ -1524,7 +1524,7 @@ header .logo a {
 .about-content h3 {
 	font-family: "poppins-bold", sans-serif;
 	font-size: 1.8rem;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: .25rem;
 }
 .about-content .info-list {
@@ -1538,7 +1538,7 @@ header .logo a {
 .about-content .info-list li strong {
 	font-family: "poppins-bold", sans-serif;
 	color: #313131;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: .2rem;
 	font-size: 1.5rem;
 	line-height: 3rem;
@@ -1849,7 +1849,7 @@ header .logo a {
 #portfolio .folio-types {
 	margin: 0;
 	padding: 0;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	font-family: "poppins-regular", sans-serif;
 	font-size: 1.2rem;
 	letter-spacing: .1rem;
@@ -1923,7 +1923,7 @@ header .logo a {
 	font-family: "poppins-bold", sans-serif;
 	font-size: 1.1rem;
 	line-height: 1.8rem;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: .1rem;
 	display: block;
 	text-align: left;
@@ -1939,7 +1939,7 @@ header .logo a {
 	font-size: 1.2rem;
 	line-height: 6rem;
 	color: #FFFFFF;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: 3px;
 	cursor: pointer;
 	display: block;
@@ -2306,7 +2306,7 @@ header .logo a {
 	position: absolute;
 	bottom: -1.2rem;
 	right: .6rem;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	letter-spacing: .1rem;
 	padding: 0 2rem;
 	margin: 0;
@@ -2400,7 +2400,7 @@ header .logo a {
 	font-family: "poppins-bold", sans-serif;
 	color: #FFFFFF;
 	letter-spacing: .3rem;
-	text-transform: uppercase;
+	text-transform: lowercase;
 }
 .oldie #submit-loader .s-loader {
 	display: none;
@@ -2581,7 +2581,7 @@ footer .copyright span:last-child::after {
 	background: #005bcc;
 	color: #FFFFFF;
 	text-align: center;
-	text-transform: uppercase;
+	text-transform: lowercase;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
