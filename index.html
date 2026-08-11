@@ -195,10 +195,12 @@
       rocks.some(r => r.x === pos.x && r.y === pos.y);
   }
 
-  function frontOfHead() {
-    const head = snake[0];
-    const dir = DIR_VEC[direction];
-    return { x: head.x + dir.x, y: head.y + dir.y };
+  function nearSnake(pos, radius) {
+    return snake.some(s => {
+      const dx = s.x - pos.x;
+      const dy = s.y - pos.y;
+      return dx * dx + dy * dy <= radius * radius;
+    });
   }
 
   function placeFood() {
@@ -218,14 +220,13 @@
     food = pos;
 
     if (foodSpawnCount > 3 && Math.random() < 0.2) {
-      const front = frontOfHead();
       let rockPos;
       do {
         rockPos = { x: Math.floor(Math.random() * COLS), y: Math.floor(Math.random() * ROWS) };
       } while (
         isOccupied(rockPos) ||
         (rockPos.x === food.x && rockPos.y === food.y) ||
-        (rockPos.x === front.x && rockPos.y === front.y)
+        nearSnake(rockPos, 3)
       );
       rocks.push(rockPos);
     }
