@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matty's Dratini Chase II</title>
+<style>
+  :root {
+    --bg: #121213;
+    --border: #3a3a3c;
+    --text: #ffffff;
+    --snake: #7ec8e3;
+    --snake-head: #5fb3d9;
+    --food: #b59f3b;
+    --grid: #1e1e1f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    user-select: none;
+  }
+  header {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 1.4rem;
+  }
+  #hud {
+    display: flex;
+    gap: 24px;
+    margin: 12px 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  #message {
+    min-height: 1.5em;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  canvas {
+    background: var(--grid);
+    border: 2px solid var(--border);
+    image-rendering: pixelated;
+  }
+  #controls {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .pad-row {
+    display: flex;
+    gap: 8px;
+  }
+  .pad-btn {
+    width: 56px;
+    height: 56px;
+    background: #818384;
+    border: none;
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 1.4rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .pad-btn:active {
+    background: #565758;
+  }
+  #newGame {
+    background: var(--snake);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    display: none;
+  }
+  #hint {
+    margin-top: 10px;
+    color: #888;
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<header id="title">Matty's Dratini Chase II</header>
+<div id="hud">
+  <div>Score: <span id="score">0</span></div>
+  <div>Best: <span id="best">0</span></div>
+</div>
+<div id="message"></div>
+<canvas id="game" width="400" height="400"></canvas>
+<button id="newGame">New Game</button>
+<div id="controls">
+  <div class="pad-row">
+    <button class="pad-btn" data-dir="up">↑</button>
+  </div>
+  <div class="pad-row">
+    <button class="pad-btn" data-dir="left">←</button>
+    <button class="pad-btn" data-dir="down">↓</button>
+    <button class="pad-btn" data-dir="right">→</button>
+  </div>
+</div>
+<div id="hint">Use arrow keys / WASD or the buttons. Press Space to pause. Press Enter to start a new game after losing.</div>
+
+<script>
+(() => {
+  const CELL = 20;
+  const COLS = 20;
+  const ROWS = 20;
+  const canvas = document.getElementById("game");
+  const ctx = canvas.getContext("2d");
+  const scoreEl = document.getElementById("score");
+  const bestEl = document.getElementById("best");
+  const messageEl = document.getElementById("message");
+  const newGameBtn = document.getElementById("newGame");
+
+  const BASE_SPEED = 140;
+  const MIN_SPEED = 60;
+
+  let best = Number(localStorage.getItem("snake-best") || 0);
+  bestEl.textContent = best;
+
+  let snake, direction, nextDirection, food, score, speed, gameOver, paused, loopId, stage, rocks;
+  const EVOLUTIONS = [
+    { score: 0, name: "DRATINI" },
+    { score: 150, name: "DRAGONAIR" },
+    { score: 300, name: "DRAGONITE" },
+  ];
+  const MEGA_STAGE = 3;
+  const MEGA_SCORE = 500;
+
+  function reset() {
+    snake = [
+      { x: 9, y: 10 },
+      { x: 8, y: 10 },
+      { x: 7, y: 10 },
+    ];
+    direction = "right";
+    nextDirection = "right";
+    score = 0;
+    speed = BASE_SPEED;
+    gameOver = false;
+    paused = false;
+    stage = 0;
+    rocks = [];
+    scoreEl.textContent = score;
+    messageEl.textContent = "";
+    newGameBtn.style.display = "none";
+    placeFood();
+    if (loopId) clearTimeout(loopId);
+    tick();
+  }
+
+  function isOccupied(pos) {
+    return snake.some(s => s.x === pos.x && s.y === pos.y) ||
+      rocks.some(r => r.x === pos.x && r.y === pos.y);
+  }
+
+  function placeFood() {
+    let pos;
+    do {
+      pos = { x: Math.floor(Math.random() * COLS), y: Math.floor(Math.random() * ROWS) };
+    } while (isOccupied(pos));
+
+    if (stage === MEGA_STAGE - 1 && score >= MEGA_SCORE) {
+      pos.type = "megastone";
+    } else {
+      const roll = Math.random();
+      pos.type = roll < 0.05 ? "sitrus" : roll < 0.25 ? "pecha" : "oran";
+    }
+    food = pos;
+
+    if (Math.random() < 0.2) {
+      let rockPos;
+      do {
+        rockPos = { x: Math.floor(Math.random() * COLS), y: Math.floor(Math.random() * ROWS) };
+      } while (isOccupied(rockPos) || (rockPos.x === food.x && rockPos.y === food.y));
+      rocks.push(rockPos);
+    }
+  }
+
+  const DIR_VEC = {
+    up: { x: 0, y: -1 },
+    down: { x: 0, y: 1 },
+    left: { x: -1, y: 0 },
+    right: { x: 1, y: 0 },
+  };
+  const CREAM = "#f5e9c8";
+
+  const BERRY_COLORS = {
+    oran: { base: "#4a6fd4", light: "#7b98e8", dark: "#2f4aa8" },
+    pecha: { base: "#e85fa0", light: "#f191c2", dark: "#c22e74" },
+    sitrus: { base: "#e8a23a", light: "#f3c56f", dark: "#b8721e" },
+  };
+
+  function drawFood() {
+    const cx = food.x * CELL + CELL / 2;
+    const cy = food.y * CELL + CELL / 2;
+
+    if (food.type === "megastone") {
+      drawMegaStone(cx, cy);
+      return;
+    }
+
+    const r = CELL / 2 - 3;
+    const colors = BERRY_COLORS[food.type] || BERRY_COLORS.oran;
+
+    ctx.fillStyle = colors.base;
+    ctx.beginPath();
+    ctx.arc(cx, cy + 1, r, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = colors.light;
+    ctx.beginPath(); ctx.arc(cx - r * 0.35, cy - r * 0.1, r * 0.22, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(cx + r * 0.3, cy + r * 0.3, r * 0.18, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(cx + r * 0.1, cy - r * 0.35, r * 0.14, 0, Math.PI * 2); ctx.fill();
+
+    ctx.fillStyle = colors.dark;
+    ctx.beginPath(); ctx.arc(cx - r * 0.1, cy + r * 0.4, r * 0.13, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(cx - r * 0.4, cy + r * 0.25, r * 0.1, 0, Math.PI * 2); ctx.fill();
+
+    ctx.strokeStyle = "#3a5a2e";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - r);
+    ctx.lineTo(cx, cy - r - 4);
+    ctx.stroke();
+
+    ctx.fillStyle = "#4caf50";
+    ctx.beginPath();
+    ctx.ellipse(cx + 3, cy - r - 3, r * 0.4, r * 0.22, -Math.PI / 5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function drawMegaStone(cx, cy) {
+    const r = CELL / 2 - 2;
+
+    ctx.fillStyle = "#e8722a";
+    ctx.globalAlpha = 0.3;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r + 4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+
+    const pts = [];
+    for (let i = 0; i < 6; i++) {
+      const angle = -Math.PI / 2 + i * (Math.PI / 3);
+      pts.push({ x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) });
+    }
+
+    const shades = ["#e8722a", "#d4661f", "#e8722a", "#d4661f", "#e8722a", "#d4661f"];
+    for (let i = 0; i < 6; i++) {
+      const next = (i + 1) % 6;
+      ctx.fillStyle = shades[i];
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.lineTo(pts[next].x, pts[next].y);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    ctx.fillStyle = "#ffcf7a";
+    ctx.globalAlpha = 0.5;
+    ctx.beginPath();
+    ctx.moveTo(pts[5].x, pts[5].y);
+    ctx.lineTo(pts[0].x, pts[0].y);
+    ctx.lineTo(cx, cy);
+    ctx.closePath();
+    ctx.fill();
+    ctx.globalAlpha = 1;
+
+    ctx.strokeStyle = "#7a3a0f";
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (let i = 1; i < 6; i++) ctx.lineTo(pts[i].x, pts[i].y);
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.fillStyle = "#ffe066";
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - r * 0.25);
+    ctx.quadraticCurveTo(cx + r * 0.35, cy - r * 0.1, cx + r * 0.15, cy + r * 0.2);
+    ctx.quadraticCurveTo(cx, cy + r * 0.05, cx - r * 0.15, cy + r * 0.2);
+    ctx.quadraticCurveTo(cx - r * 0.35, cy - r * 0.1, cx, cy - r * 0.25);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function drawRock(rock) {
+    const cx = rock.x * CELL + CELL / 2;
+    const cy = rock.y * CELL + CELL / 2;
+    const r = CELL / 2 - 2;
+
+    ctx.fillStyle = "#5a5a5c";
+    ctx.beginPath();
+    ctx.moveTo(cx - r * 0.9, cy + r * 0.5);
+    ctx.lineTo(cx - r * 0.6, cy - r * 0.7);
+    ctx.lineTo(cx + r * 0.1, cy - r * 0.9);
+    ctx.lineTo(cx + r * 0.9, cy - r * 0.2);
+    ctx.lineTo(cx + r * 0.7, cy + r * 0.7);
+    ctx.lineTo(cx - r * 0.2, cy + r * 0.9);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.fillStyle = "#7a7a7c";
+    ctx.beginPath();
+    ctx.moveTo(cx - r * 0.6, cy - r * 0.7);
+    ctx.lineTo(cx + r * 0.1, cy - r * 0.9);
+    ctx.lineTo(cx + r * 0.2, cy - r * 0.1);
+    ctx.lineTo(cx - r * 0.4, cy - r * 0.1);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.strokeStyle = "#3a3a3c";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(cx - r * 0.2, cy - r * 0.1);
+    ctx.lineTo(cx + r * 0.1, cy + r * 0.4);
+    ctx.moveTo(cx + r * 0.2, cy - r * 0.1);
+    ctx.lineTo(cx + r * 0.5, cy + r * 0.2);
+    ctx.stroke();
+  }
+
+  const PALETTE = [
+    { body: "#7ec8e3", head: "#5fb3d9", accent: CREAM, wing: null, horn: null, eye: null },
+    { body: "#f08fb0", head: "#d15a8a", accent: "#fdf6e3", wing: "#f08fb0", horn: "#fdf6e3", eye: null },
+    { body: "#f4b47e", head: "#e8935a", accent: "#fff5e6", wing: "#4caf50", horn: "#fff5e6", eye: null },
+    { body: "#e8722a", head: "#c85a1a", accent: "#fff5e6", wing: "#4caf50", horn: "#ffe066", eye: { sclera: "#ffe066", pupil: "#c0142c" } },
+  ];
+
+  function drawTailFin(tailSeg, prevSeg) {
+    const cx = tailSeg.x * CELL + CELL / 2;
+    const cy = tailSeg.y * CELL + CELL / 2;
+    let dx = tailSeg.x - prevSeg.x;
+    let dy = tailSeg.y - prevSeg.y;
+    if (dx === 0 && dy === 0) { dx = 1; dy = 0; }
+    const angle = Math.atan2(dy, dx);
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(angle);
+    ctx.fillStyle = PALETTE[stage].accent;
+    ctx.beginPath();
+    ctx.moveTo(CELL * 0.2, 0);
+    ctx.quadraticCurveTo(CELL * 0.9, -CELL * 0.5, CELL * 1.1, 0);
+    ctx.quadraticCurveTo(CELL * 0.9, CELL * 0.5, CELL * 0.2, 0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawBodySegment(seg, i) {
+    const cx = seg.x * CELL + CELL / 2;
+    const cy = seg.y * CELL + CELL / 2;
+    const r = CELL / 2 - 1;
+    const isHead = i === 0;
+    const colors = PALETTE[stage];
+    ctx.save();
+    ctx.translate(cx, cy);
+    if (isHead) {
+      const dir = DIR_VEC[direction];
+      ctx.rotate(Math.atan2(dir.y, dir.x));
+    }
+
+    ctx.fillStyle = isHead ? colors.head : colors.body;
+    ctx.beginPath();
+    ctx.arc(0, 0, r, 0, Math.PI * 2);
+    ctx.fill();
+
+    if (!isHead && i % 3 === 2) {
+      ctx.strokeStyle = colors.accent;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(0, 0, r - 1, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    if (isHead && colors.wing) {
+      ctx.fillStyle = colors.wing;
+      ctx.beginPath();
+      ctx.moveTo(-r * 0.6, -r * 0.6);
+      ctx.quadraticCurveTo(-r * 1.6, -r * 1.1, -r * 1.7, -r * 0.3);
+      ctx.quadraticCurveTo(-r * 1.1, -r * 0.3, -r * 0.6, 0);
+      ctx.closePath();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(-r * 0.6, r * 0.6);
+      ctx.quadraticCurveTo(-r * 1.6, r * 1.1, -r * 1.7, r * 0.3);
+      ctx.quadraticCurveTo(-r * 1.1, r * 0.3, -r * 0.6, 0);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    if (isHead && colors.horn) {
+      ctx.fillStyle = colors.horn;
+      ctx.beginPath();
+      ctx.moveTo(r * 0.1, -r * 0.9);
+      ctx.lineTo(r * 0.35, -r * 1.6);
+      ctx.lineTo(r * 0.55, -r * 0.85);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    if (isHead) {
+      ctx.fillStyle = colors.accent;
+      ctx.beginPath();
+      ctx.moveTo(-r * 0.3, -r * 0.5);
+      ctx.lineTo(-r * 1.3, -r * 0.9);
+      ctx.lineTo(-r * 0.5, -r * 0.1);
+      ctx.closePath();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(-r * 0.3, r * 0.5);
+      ctx.lineTo(-r * 1.3, r * 0.9);
+      ctx.lineTo(-r * 0.5, r * 0.1);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = colors.eye ? colors.eye.sclera : "#fff";
+      ctx.beginPath(); ctx.arc(r * 0.3, -r * 0.45, r * 0.28, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(r * 0.3, r * 0.45, r * 0.28, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = colors.eye ? colors.eye.pupil : "#111";
+      ctx.beginPath(); ctx.arc(r * 0.42, -r * 0.45, r * 0.14, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(r * 0.42, r * 0.45, r * 0.14, 0, Math.PI * 2); ctx.fill();
+    }
+
+    ctx.restore();
+  }
+
+  function draw() {
+    ctx.fillStyle = "#1e1e1f";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    drawFood();
+    rocks.forEach(drawRock);
+
+    if (snake.length > 1) {
+      drawTailFin(snake[snake.length - 1], snake[snake.length - 2]);
+    }
+
+    for (let i = snake.length - 1; i >= 0; i--) {
+      drawBodySegment(snake[i], i);
+    }
+  }
+
+  function step() {
+    direction = nextDirection;
+    const head = { ...snake[0] };
+
+    if (direction === "up") head.y -= 1;
+    else if (direction === "down") head.y += 1;
+    else if (direction === "left") head.x -= 1;
+    else if (direction === "right") head.x += 1;
+
+    if (head.x < 0 || head.x >= COLS || head.y < 0 || head.y >= ROWS) {
+      return endGame();
+    }
+    if (snake.some(s => s.x === head.x && s.y === head.y)) {
+      return endGame();
+    }
+    if (rocks.some(r => r.x === head.x && r.y === head.y)) {
+      return endGame();
+    }
+
+    snake.unshift(head);
+
+    if (head.x === food.x && head.y === food.y) {
+      const eatenType = food.type;
+      score += eatenType === "megastone" ? 100 : eatenType === "sitrus" ? 50 : eatenType === "pecha" ? 20 : 10;
+      scoreEl.textContent = score;
+      speed = Math.max(MIN_SPEED, BASE_SPEED - Math.floor(score / 10) * 4);
+
+      if (eatenType === "megastone") {
+        stage = MEGA_STAGE;
+        document.title = "Mega Dragonite";
+        const evolveMsg = "Dragonite Mega Evolved into Mega Dragonite!";
+        messageEl.textContent = evolveMsg;
+        setTimeout(() => {
+          if (messageEl.textContent === evolveMsg) messageEl.textContent = "";
+        }, 2000);
+      } else {
+        const nextStage = stage + 1;
+        if (nextStage < EVOLUTIONS.length && score >= EVOLUTIONS[nextStage].score) {
+          const fromName = EVOLUTIONS[stage].name;
+          const toName = EVOLUTIONS[nextStage].name;
+          stage = nextStage;
+          document.title = toName[0] + toName.slice(1).toLowerCase();
+          const evolveMsg = `${fromName[0]}${fromName.slice(1).toLowerCase()} evolved into ${toName[0]}${toName.slice(1).toLowerCase()}!`;
+          messageEl.textContent = evolveMsg;
+          setTimeout(() => {
+            if (messageEl.textContent === evolveMsg) messageEl.textContent = "";
+          }, 2000);
+        }
+      }
+
+      placeFood();
+    } else {
+      snake.pop();
+    }
+  }
+
+  function endGame() {
+    gameOver = true;
+    if (score > best) {
+      best = score;
+      localStorage.setItem("snake-best", best);
+      bestEl.textContent = best;
+    }
+    messageEl.textContent = "Game Over!";
+    newGameBtn.style.display = "inline-block";
+  }
+
+  function tick() {
+    if (!gameOver && !paused) {
+      step();
+      draw();
+    }
+    if (!gameOver) {
+      loopId = setTimeout(tick, speed);
+    }
+  }
+
+  const OPPOSITE = { up: "down", down: "up", left: "right", right: "left" };
+
+  function setDirection(dir) {
+    if (gameOver) return;
+    if (OPPOSITE[dir] === direction) return;
+    nextDirection = dir;
+  }
+
+  function togglePause() {
+    if (gameOver) return;
+    paused = !paused;
+    messageEl.textContent = paused ? "Paused" : "";
+  }
+
+  document.addEventListener("keydown", (e) => {
+    const key = e.key.toLowerCase();
+    if (key === "enter" && gameOver) { e.preventDefault(); reset(); return; }
+    if (["arrowup", "w"].includes(key)) setDirection("up");
+    else if (["arrowdown", "s"].includes(key)) setDirection("down");
+    else if (["arrowleft", "a"].includes(key)) setDirection("left");
+    else if (["arrowright", "d"].includes(key)) setDirection("right");
+    else if (key === " ") { e.preventDefault(); togglePause(); }
+    else return;
+    e.preventDefault();
+  });
+
+  document.querySelectorAll(".pad-btn").forEach(btn => {
+    btn.addEventListener("click", () => setDirection(btn.dataset.dir));
+  });
+
+  newGameBtn.addEventListener("click", reset);
+
+  reset();
+})();
+</script>
+
+</body>
+</html>
