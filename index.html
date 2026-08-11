@@ -384,7 +384,7 @@
     { body: "#7f97d6", head: "#a3b8e8", accent: "#f7f5ef", wing: null, horn: null, eye: null },
     { body: "#7fb2e0", head: "#6fa0d8", accent: "#ffffff", wing: "#f2f2f2", horn: "#ffffff", eye: { sclera: "#ffffff", pupil: "#7a1f4b" } },
     { body: "#f4b47e", head: "#e8935a", accent: "#fff5e6", wing: "#4caf50", horn: "#fff5e6", eye: null },
-    { body: "#e8722a", head: "#c85a1a", accent: "#fff5e6", wing: "#4caf50", horn: "#ffe066", eye: { sclera: "#ffe066", pupil: "#c0142c" } },
+    { body: "#e0a855", head: "#e8ba72", accent: "#f5e6c8", wing: "#f0e8d0", horn: "#3a8f7a", eye: { sclera: "#4ac9a0", pupil: "#163a30" } },
   ];
 
   function drawTailFin(tailSeg, prevSeg) {
@@ -422,6 +422,25 @@
       ctx.lineTo(CELL * 1.3, 0);
       ctx.lineTo(CELL * 0.85, r * 0.22);
       ctx.closePath();
+      ctx.fill();
+    } else if (stage === MEGA_STAGE) {
+      const r = CELL / 2 - 1;
+      const orbR = r * 0.85;
+      const ocx = CELL * 0.55;
+      const grad = ctx.createRadialGradient(ocx - orbR * 0.3, -orbR * 0.3, orbR * 0.1, ocx, 0, orbR);
+      grad.addColorStop(0, "#dff5ec");
+      grad.addColorStop(0.5, "#4ac9a0");
+      grad.addColorStop(1, "#1f6b52");
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(ocx, 0, orbR, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = "#163a30";
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+      ctx.fillStyle = "rgba(255,255,255,0.6)";
+      ctx.beginPath();
+      ctx.arc(ocx - orbR * 0.3, -orbR * 0.3, orbR * 0.22, 0, Math.PI * 2);
       ctx.fill();
     } else {
       ctx.fillStyle = PALETTE[stage].accent;
@@ -585,7 +604,6 @@
 
       if (eatenType === "megastone") {
         stage = MEGA_STAGE;
-        document.title = "Mega Dragonite";
         const evolveMsg = "Dragonite Mega Evolved into Mega Dragonite!";
         messageEl.textContent = evolveMsg;
         playEvolutionFlash();
@@ -598,7 +616,6 @@
           const fromName = EVOLUTIONS[stage].name;
           const toName = EVOLUTIONS[nextStage].name;
           stage = nextStage;
-          document.title = toName[0] + toName.slice(1).toLowerCase();
           const evolveMsg = `${fromName[0]}${fromName.slice(1).toLowerCase()} evolved into ${toName[0]}${toName.slice(1).toLowerCase()}!`;
           messageEl.textContent = evolveMsg;
           playEvolutionFlash();
