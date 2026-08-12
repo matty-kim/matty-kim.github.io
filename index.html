@@ -709,12 +709,23 @@
     ctx.restore();
   }
 
+  const RAINBOW_GLOW = ["#ff004c", "#ff8c00", "#ffee00", "#00e676", "#00b0ff", "#7c4dff", "#ff00c8"];
+
+  function currentGlowColor() {
+    return RAINBOW_GLOW[Math.floor(Date.now() / 150) % RAINBOW_GLOW.length];
+  }
+
   function draw() {
     ctx.fillStyle = "#1e1e1f";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawFood();
     rocks.forEach(drawRock);
+
+    if (stage === MEGA_STAGE) {
+      ctx.shadowColor = currentGlowColor();
+      ctx.shadowBlur = 3;
+    }
 
     if (snake.length > 1) {
       drawTailFin(snake[snake.length - 1], snake[snake.length - 2]);
@@ -723,6 +734,9 @@
     for (let i = snake.length - 1; i >= 0; i--) {
       drawBodySegment(snake[i], i);
     }
+
+    ctx.shadowBlur = 0;
+    ctx.shadowColor = "transparent";
   }
 
   function step() {
